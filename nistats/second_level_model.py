@@ -384,9 +384,8 @@ class SecondLevelModel(BaseEstimator, TransformerMixin, CacheMixin):
                              ' "p_value", "effect_size" or "effect_variance"')
 
         if self.memory is not None:
-            arg_ignore = ['labels', 'results']
             mem_contrast = self.memory.cache(compute_contrast,
-                                             ignore=arg_ignore)
+                                             )
         else:
             mem_contrast = compute_contrast
         contrast = mem_contrast(self.labels_, self.results_, con_val,
